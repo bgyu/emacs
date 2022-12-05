@@ -52,6 +52,10 @@
   (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer-other-window))
 
+(use-package ivy-rich
+  :config
+  (ivy-rich-mode 1))
+
 (use-package counsel
   :config
   (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -71,6 +75,17 @@
   :config
   (setq which-key-idle-delay 0.3))
 
+
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+
 (use-package doom-modeline
   :init
   (doom-modeline-mode 1)
@@ -89,7 +104,7 @@
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
+   '(helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
