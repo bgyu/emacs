@@ -65,12 +65,21 @@
   (("C-s" . swiper)
    ("C-r" . swiper)))
 
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
 (use-package doom-modeline
   :init
   (doom-modeline-mode 1)
   :custom
   ((doom-modeline-height 20)))
 
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 
 (custom-set-variables
@@ -79,7 +88,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
- '(package-selected-packages '(doom-modeline counsel ivy command-log-mode use-package)))
+ '(package-selected-packages
+   '(which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
