@@ -75,6 +75,19 @@
   :config
   (setq which-key-idle-delay 0.3))
 
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/repos")
+    (setq projectile-project-search-path '("~/repos")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
 
 (use-package helpful
   :custom
@@ -107,7 +120,7 @@
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
+   '(counsel-projectile projectile spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
