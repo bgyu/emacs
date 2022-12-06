@@ -13,7 +13,7 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
  
 
-(load-theme 'tango-dark)
+(load-theme 'wombat)
 
 ;; Initialize package sources
 (require 'package)
@@ -86,12 +86,15 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+
 (use-package doom-modeline
   :init
   (doom-modeline-mode 1)
   :custom
-  ((doom-modeline-height 20)))
+  ((doom-modeline-height 10)))
 
+
+(use-package all-the-icons)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -104,7 +107,7 @@
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
+   '(spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
