@@ -56,6 +56,9 @@
   :config
   (ivy-rich-mode 1))
 
+(use-package ivy-prescient
+  :init (ivy-prescient-mode))
+
 (use-package counsel
   :config
   (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -89,6 +92,12 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
+
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+
 (use-package helpful
   :custom
   (counsel-describe-function-function #'helpful-callable)
@@ -120,7 +129,7 @@
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(counsel-projectile projectile spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
+   '(magit ivy-prescient counsel-projectile projectile spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
