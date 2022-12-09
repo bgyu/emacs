@@ -3,3 +3,8 @@ elpa/
 eshell/
 *~
 recentf
+*.eld
+*.cache
+/transient/
+/session.*
+
