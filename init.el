@@ -1,6 +1,5 @@
 (setq inhibit-startup-message t)
 
-
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -33,15 +32,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package command-log-mode)
-
-;; Log command and keys on the right window
-(global-command-log-mode)
-(setq command-log-mode-window-size 60)
-;; toggle it with C-c o
-;;(clm/toggle-command-log-buffer)
-
-
 (use-package ivy
   :config
   (ivy-mode 1)
@@ -52,10 +42,6 @@
   (setq ivy-count-format "%d/%d ")
   (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
   (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer-other-window))
-
-(use-package ivy-rich
-  :config
-  (ivy-rich-mode 1))
 
 (use-package ivy-prescient
   :init (ivy-prescient-mode))
@@ -93,7 +79,6 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
@@ -110,7 +95,6 @@
   :after org
   :hook (org-mode . org-bullets-mode))
 
-
 (use-package helpful
   :custom
   (counsel-describe-function-function #'helpful-callable)
@@ -120,50 +104,6 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
-
-
-(use-package doom-modeline
-  :init
-  (doom-modeline-mode 1)
-  :custom
-  ((doom-modeline-height 10)))
-
-;;(use-package lsp-mode
-;;  :commands (lsp lsp-deferred)
-;;  :init
-;;  (setq lsp-keymap-prefix "C-c l")
-;;  :config
-;;  (lsp-enable-which-key-integration t)
-;;  (add-hook 'c++-mode-hook #'lsp-deferred))
-;;
-
-(defun lsp-mode-setup ()
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
-
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c++-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration)
-	 (lsp-mode . lsp-mode-setup))
-  :commands (lsp lsp-defered))
-
-;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
-;; if you are helm user
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-;; optionally if you want to use debugger
-(use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-
 
 ;; company
 (use-package company
@@ -179,32 +119,15 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
-
-
 (use-package all-the-icons)
 
 (use-package treemacs-icons-dired
   :hook
   (dired-mode . treemacs-icons-dired-mode))
 
-
-
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ispell-dictionary nil)
- '(package-selected-packages
-   '(treemacs-icons-dired-mode treemacs-icons-dired dired-icon all-the-icon-dired company-box company lsp-mode org-bullets or-bullets magit ivy-prescient counsel-projectile projectile spaceline all-the-icons helpful ivy-rich which-key rainbow-delimiters doom-modeline counsel ivy command-log-mode use-package))
- '(warning-suppress-log-types '((comp))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package keycast
+  :config
+  (keycast-mode))
