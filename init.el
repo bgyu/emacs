@@ -95,15 +95,15 @@
   :after org
   :hook (org-mode . org-bullets-mode))
 
-(use-package helpful
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
+;; (use-package helpful
+;;   :custom
+;;   (counsel-describe-function-function #'helpful-callable)
+;;   (counsel-describe-variable-function #'helpful-variable)
+;;   :bind
+;;   ([remap describe-function] . counsel-describe-function)
+;;   ([remap describe-command] . helpful-command)
+;;   ([remap describe-variable] . counsel-describe-variable)
+;;   ([remap describe-key] . helpful-key))
 
 ;; company
 (use-package company
@@ -115,9 +115,6 @@
   :custom
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode))
 
 (use-package all-the-icons)
 
